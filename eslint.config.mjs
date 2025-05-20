@@ -15,7 +15,15 @@ export default antfu(
   },
   {
     rules: {
-      "node/prefer-global/process": "off",
+      "style/jsx-max-props-per-line": [
+        "error",
+        {
+          maximum: {
+            single: 2,
+            multi: 1,
+          },
+        },
+      ],
       "ts/no-redeclare": "off",
       "ts/consistent-type-definitions": ["error", "type"],
       "no-console": ["warn"],
