@@ -24,6 +24,8 @@ export default antfu(
           },
         },
       ],
+      "max-params": ["error", 2],
+      "style/function-call-argument-newline": ["error", "always"],
       "ts/no-redeclare": "off",
       "ts/consistent-type-definitions": ["error", "type"],
       "no-console": ["warn"],
