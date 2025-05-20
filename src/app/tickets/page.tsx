@@ -1,20 +1,7 @@
 import Link from "next/link";
 
 import { getTickets } from "@/actions/ticket.actions";
-import { logEvent } from "@/utils/sentry";
-
-import {Priority} from '@/generated/prisma/client'
-
-function getPriorityClass(priority: Priority) {
-  switch (priority) {
-    case "High":
-      return "text-red-600 font-bold";
-    case "Medium":
-      return "text-yellow-600 font-bold";
-    case "Low":
-      return "text-green-600 font-bold";
-  }
-}
+import { getPriorityClass } from "@/utils/ui";
 
 async function TicketsPage() {
   const tickets = await getTickets();
@@ -38,9 +25,14 @@ async function TicketsPage() {
                     <div className="text-sm text-gray-500">
                       Priority:
                       {" "}
-                      <span className={getPriorityClass(ticket.priority)}>{ticket.priority}</span>
+                      <span className={getPriorityClass(ticket.priority)}>
+                        {ticket.priority}
+                      </span>
                     </div>
-                    <Link href={`/tickets/${ticket.id}`} className="inline-block mt-2 bg-blue-600 text-white text-sm px-3 py-1 rounded hover:bg-blue-700 transition text-center cursor-pointer">
+                    <Link
+                      href={`/tickets/${ticket.id}`}
+                      className="inline-block mt-2 bg-blue-600 text-white text-sm px-3 py-1 rounded hover:bg-blue-700 transition text-center cursor-pointer"
+                    >
                       View Ticket
                     </Link>
                   </div>

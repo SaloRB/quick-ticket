@@ -2,9 +2,10 @@
 
 import { revalidatePath } from "next/cache";
 
+import type { Priority } from "@/generated/prisma";
+
 import { prisma } from "@/db/prisma";
 import { logEvent } from "@/utils/sentry";
-import { Priority } from "@/generated/prisma";
 
 export async function createTicket(
   _: CreateTicketResponse,
@@ -59,7 +60,6 @@ export async function createTicket(
     };
   }
   catch (error) {
-    console.log(error)
     logEvent({
       message: "An error ocurred while creating the ticket",
       category: "ticket",
@@ -104,5 +104,35 @@ export async function getTickets() {
     });
 
     return [];
+  }
+}
+
+export async function getTicketById(id: string) {
+  try {
+    const ticket = await prisma.ticket.findUnique({
+      where: { id: Number(id) },
+    });
+
+    if (!ticket) {
+      logEvent({
+        message: "Ticket not found",
+        category: "ticket",
+        level: "warning",
+        data: { ticketId: id },
+      });
+    }
+
+    return ticket;
+  }
+  catch (error) {
+    logEvent({
+      message: "Error fetching ticket details",
+      category: "ticket",
+      level: "error",
+      data: { ticketId: id },
+      error,
+    });
+
+    return null;
   }
 }
