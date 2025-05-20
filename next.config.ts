@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+
 import { withSentryConfig } from "@sentry/nextjs";
 
 const nextConfig: NextConfig = {
@@ -13,7 +14,7 @@ export default withSentryConfig(nextConfig, {
   project: "quick-ticket",
 
   // Only print logs for uploading source maps in CI
-  silent: !process.env.CI,
+  // silent: !process.env.CI,
 
   // For all available options, see:
   // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
