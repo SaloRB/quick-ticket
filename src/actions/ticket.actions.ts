@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 
 import { prisma } from "@/db/prisma";
 import { logEvent } from "@/utils/sentry";
+import { Priority } from "@/generated/prisma";
 
 export async function createTicket(
   _: CreateTicketResponse,
@@ -12,7 +13,7 @@ export async function createTicket(
   try {
     const subject = formData.get("subject") as string;
     const description = formData.get("description") as string;
-    const priority = formData.get("priority") as string;
+    const priority = formData.get("priority") as Priority;
 
     if (!subject || !description || !priority) {
       logEvent({
@@ -58,6 +59,7 @@ export async function createTicket(
     };
   }
   catch (error) {
+    console.log(error)
     logEvent({
       message: "An error ocurred while creating the ticket",
       category: "ticket",
@@ -71,5 +73,36 @@ export async function createTicket(
       success: false,
       message: "An error occurred while creating the ticket",
     };
+  }
+}
+
+export async function getTickets() {
+  try {
+    const tickets = await prisma.ticket.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    logEvent({
+      message: "Fetched ticket list",
+      category: "ticket",
+      level: "info",
+      data: {
+        count: tickets.length,
+      },
+    });
+
+    return tickets;
+  }
+  catch (error) {
+    logEvent({
+      message: "Error fetching tickets",
+      category: "ticket",
+      level: "error",
+      error,
+    });
+
+    return [];
   }
 }

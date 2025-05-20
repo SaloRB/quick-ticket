@@ -20,6 +20,24 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 export type Ticket = $Result.DefaultSelection<Prisma.$TicketPayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const Priority: {
+  High: 'High',
+  Medium: 'Medium',
+  Low: 'Low'
+};
+
+export type Priority = (typeof Priority)[keyof typeof Priority]
+
+}
+
+export type Priority = $Enums.Priority
+
+export const Priority: typeof $Enums.Priority
+
+/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -893,7 +911,7 @@ export namespace Prisma {
     id: number | null
     subject: string | null
     description: string | null
-    priority: string | null
+    priority: $Enums.Priority | null
     status: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -903,7 +921,7 @@ export namespace Prisma {
     id: number | null
     subject: string | null
     description: string | null
-    priority: string | null
+    priority: $Enums.Priority | null
     status: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -1050,7 +1068,7 @@ export namespace Prisma {
     id: number
     subject: string
     description: string
-    priority: string
+    priority: $Enums.Priority
     status: string
     createdAt: Date
     updatedAt: Date
@@ -1124,7 +1142,7 @@ export namespace Prisma {
       id: number
       subject: string
       description: string
-      priority: string
+      priority: $Enums.Priority
       status: string
       createdAt: Date
       updatedAt: Date
@@ -1554,7 +1572,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Ticket", 'Int'>
     readonly subject: FieldRef<"Ticket", 'String'>
     readonly description: FieldRef<"Ticket", 'String'>
-    readonly priority: FieldRef<"Ticket", 'String'>
+    readonly priority: FieldRef<"Ticket", 'Priority'>
     readonly status: FieldRef<"Ticket", 'String'>
     readonly createdAt: FieldRef<"Ticket", 'DateTime'>
     readonly updatedAt: FieldRef<"Ticket", 'DateTime'>
@@ -2001,6 +2019,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Priority'
+   */
+  export type EnumPriorityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Priority'>
+    
+
+
+  /**
+   * Reference to a field of type 'Priority[]'
+   */
+  export type ListEnumPriorityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Priority[]'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -2038,7 +2070,7 @@ export namespace Prisma {
     id?: IntFilter<"Ticket"> | number
     subject?: StringFilter<"Ticket"> | string
     description?: StringFilter<"Ticket"> | string
-    priority?: StringFilter<"Ticket"> | string
+    priority?: EnumPriorityFilter<"Ticket"> | $Enums.Priority
     status?: StringFilter<"Ticket"> | string
     createdAt?: DateTimeFilter<"Ticket"> | Date | string
     updatedAt?: DateTimeFilter<"Ticket"> | Date | string
@@ -2061,7 +2093,7 @@ export namespace Prisma {
     NOT?: TicketWhereInput | TicketWhereInput[]
     subject?: StringFilter<"Ticket"> | string
     description?: StringFilter<"Ticket"> | string
-    priority?: StringFilter<"Ticket"> | string
+    priority?: EnumPriorityFilter<"Ticket"> | $Enums.Priority
     status?: StringFilter<"Ticket"> | string
     createdAt?: DateTimeFilter<"Ticket"> | Date | string
     updatedAt?: DateTimeFilter<"Ticket"> | Date | string
@@ -2089,7 +2121,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Ticket"> | number
     subject?: StringWithAggregatesFilter<"Ticket"> | string
     description?: StringWithAggregatesFilter<"Ticket"> | string
-    priority?: StringWithAggregatesFilter<"Ticket"> | string
+    priority?: EnumPriorityWithAggregatesFilter<"Ticket"> | $Enums.Priority
     status?: StringWithAggregatesFilter<"Ticket"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Ticket"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Ticket"> | Date | string
@@ -2098,7 +2130,7 @@ export namespace Prisma {
   export type TicketCreateInput = {
     subject: string
     description: string
-    priority: string
+    priority?: $Enums.Priority
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -2108,7 +2140,7 @@ export namespace Prisma {
     id?: number
     subject: string
     description: string
-    priority: string
+    priority?: $Enums.Priority
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -2117,7 +2149,7 @@ export namespace Prisma {
   export type TicketUpdateInput = {
     subject?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    priority?: StringFieldUpdateOperationsInput | string
+    priority?: EnumPriorityFieldUpdateOperationsInput | $Enums.Priority
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -2127,7 +2159,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     subject?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    priority?: StringFieldUpdateOperationsInput | string
+    priority?: EnumPriorityFieldUpdateOperationsInput | $Enums.Priority
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -2137,7 +2169,7 @@ export namespace Prisma {
     id?: number
     subject: string
     description: string
-    priority: string
+    priority?: $Enums.Priority
     status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -2146,7 +2178,7 @@ export namespace Prisma {
   export type TicketUpdateManyMutationInput = {
     subject?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    priority?: StringFieldUpdateOperationsInput | string
+    priority?: EnumPriorityFieldUpdateOperationsInput | $Enums.Priority
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -2156,7 +2188,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     subject?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    priority?: StringFieldUpdateOperationsInput | string
+    priority?: EnumPriorityFieldUpdateOperationsInput | $Enums.Priority
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -2186,6 +2218,13 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type EnumPriorityFilter<$PrismaModel = never> = {
+    equals?: $Enums.Priority | EnumPriorityFieldRefInput<$PrismaModel>
+    in?: $Enums.Priority[] | ListEnumPriorityFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Priority[] | ListEnumPriorityFieldRefInput<$PrismaModel>
+    not?: NestedEnumPriorityFilter<$PrismaModel> | $Enums.Priority
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -2271,6 +2310,16 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type EnumPriorityWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Priority | EnumPriorityFieldRefInput<$PrismaModel>
+    in?: $Enums.Priority[] | ListEnumPriorityFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Priority[] | ListEnumPriorityFieldRefInput<$PrismaModel>
+    not?: NestedEnumPriorityWithAggregatesFilter<$PrismaModel> | $Enums.Priority
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPriorityFilter<$PrismaModel>
+    _max?: NestedEnumPriorityFilter<$PrismaModel>
+  }
+
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2287,6 +2336,10 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type EnumPriorityFieldUpdateOperationsInput = {
+    set?: $Enums.Priority
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -2324,6 +2377,13 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedEnumPriorityFilter<$PrismaModel = never> = {
+    equals?: $Enums.Priority | EnumPriorityFieldRefInput<$PrismaModel>
+    in?: $Enums.Priority[] | ListEnumPriorityFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Priority[] | ListEnumPriorityFieldRefInput<$PrismaModel>
+    not?: NestedEnumPriorityFilter<$PrismaModel> | $Enums.Priority
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -2379,6 +2439,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedEnumPriorityWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Priority | EnumPriorityFieldRefInput<$PrismaModel>
+    in?: $Enums.Priority[] | ListEnumPriorityFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Priority[] | ListEnumPriorityFieldRefInput<$PrismaModel>
+    not?: NestedEnumPriorityWithAggregatesFilter<$PrismaModel> | $Enums.Priority
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPriorityFilter<$PrismaModel>
+    _max?: NestedEnumPriorityFilter<$PrismaModel>
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {

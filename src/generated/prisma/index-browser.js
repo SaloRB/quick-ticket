@@ -139,7 +139,11 @@ exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
 };
-
+exports.Priority = exports.$Enums.Priority = {
+  High: 'High',
+  Medium: 'Medium',
+  Low: 'Low'
+};
 
 exports.Prisma.ModelName = {
   Ticket: 'Ticket'
