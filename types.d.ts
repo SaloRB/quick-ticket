@@ -1,6 +1,5 @@
-type ResponseResult = {
-  success: boolean;
-  message: string;
+type AuthPayload = {
+  userId: string;
 };
 
 type LogEventParams = {
@@ -12,3 +11,8 @@ type LogEventParams = {
 };
 
 type LogLevel = "fatal" | "error" | "warning" | "info" | "debug";
+
+type ResponseResult = {
+  success: boolean;
+  message: string;
+};

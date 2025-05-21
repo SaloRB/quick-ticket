@@ -40,6 +40,7 @@ export async function createTicket(
         subject,
         description,
         priority,
+        userId: 'abc',
       },
     });
 
