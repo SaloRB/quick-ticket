@@ -26,7 +26,7 @@ async function TicketDetailsPage(props: {
   });
 
   return (
-    <div className="min-h-screen bg-blue-50 p-8">
+    <div className="bg-blue-50 p-8 flex-1">
       <div className="max-w-2xl mx-auto bg-white rounded-lg shadow border border-gray-200 p-8 space-y-6">
         <h1 className="text-3xl font-bold text-blue-600">{ticket.subject}</h1>
 

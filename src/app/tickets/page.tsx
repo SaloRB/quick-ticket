@@ -7,7 +7,7 @@ async function TicketsPage() {
   const tickets = await getTickets();
 
   return (
-    <div className="min-h-screen bg-blue-50 p-8">
+    <div className="bg-blue-50 p-8 flex-1">
       <h1 className="text-3xl font-bold text-blue-600 mb-8 text-center">Support Tickets</h1>
       {!tickets.length
         ? <p className="text-center text-gray-600">No Tickets Yet</p>
