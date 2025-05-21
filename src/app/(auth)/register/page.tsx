@@ -7,8 +7,8 @@ import { toast } from "sonner";
 import { registerUser } from "@/actions/auth.actions";
 
 function RegisterPage() {
-  const router = useRouter()
-  
+  const router = useRouter();
+
   const initialState = {
     success: false,
     message: "",
@@ -18,13 +18,14 @@ function RegisterPage() {
 
   useEffect(() => {
     if (state.success) {
-      toast.success('Registration successful!')
-      router.push('/tickets')
-      router.refresh()
-    } else if (state.message) {
-      toast.error(state.message)
+      toast.success("Registration successful!");
+      router.push("/tickets");
+      router.refresh();
     }
-  }, [state, router])
+    else if (state.message) {
+      toast.error(state.message);
+    }
+  }, [state, router]);
 
   return (
     <div className="flex-1 flex items-center justify-center bg-blue-50 px-4">

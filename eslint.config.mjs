@@ -1,4 +1,5 @@
 import antfu from "@antfu/eslint-config";
+import nextPlugin from "@next/eslint-plugin-next";
 
 export default antfu(
   {
@@ -11,33 +12,39 @@ export default antfu(
       semi: true,
       quotes: "double",
     },
-    ignores: ["**/generated/*"],
+    ignores: [
+      "**/generated/*",
+      "**/instrumentation*",
+    ],
+  },
+  {
+    plugins: {
+      "@next/next": nextPlugin,
+    },
+    rules: {
+      ...nextPlugin.configs.recommended.rules,
+      ...nextPlugin.configs["core-web-vitals"].rules,
+    },
   },
   {
     rules: {
-      "style/jsx-max-props-per-line": [
-        "error",
-        {
-          maximum: {
-            single: 2,
-            multi: 1,
-          },
-        },
-      ],
-      "style/function-call-argument-newline": ["error", "always"],
-      "ts/no-redeclare": "off",
-      "ts/consistent-type-definitions": ["error", "type"],
-      "no-console": ["warn"],
       "antfu/no-top-level-await": ["off"],
-      "node/prefer-global/process": ["off"],
+      "no-console": ["warn"],
       "node/no-process-env": ["error"],
+      "node/prefer-global/process": ["off"],
       "perfectionist/sort-imports": ["error", {
         tsconfigRootDir: ".",
       }],
-      "unicorn/filename-case": ["error", {
-        case: "kebabCase",
-        ignore: ["README.md"],
-      }],
+      "style/function-call-argument-newline": ["error", "consistent"],
+      "ts/consistent-type-definitions": ["error", "type"],
+      "ts/no-redeclare": "off",
+      "unicorn/filename-case": [
+        "error",
+        {
+          case: "kebabCase",
+          ignore: ["README.md"],
+        },
+      ],
     },
   },
 );

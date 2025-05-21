@@ -47,7 +47,7 @@ export async function verifyAuthToken<T>(
       message: "Token decryption failed",
       category: "auth",
       level: "error",
-      data: { tokenSnippet: token.slice(0,10) },
+      data: { tokenSnippet: token.slice(0, 10) },
       error,
     });
     throw new Error("Token decryption failed");
