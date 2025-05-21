@@ -8,9 +8,9 @@ import { prisma } from "@/db/prisma";
 import { logEvent } from "@/utils/sentry";
 
 export async function createTicket(
-  _: CreateTicketResponse,
+  _: ResponseResult,
   formData: FormData,
-): Promise<CreateTicketResponse> {
+): Promise<ResponseResult> {
   try {
     const subject = formData.get("subject") as string;
     const description = formData.get("description") as string;

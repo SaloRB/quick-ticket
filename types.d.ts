@@ -1,4 +1,4 @@
-type CreateTicketResponse = {
+type ResponseResult = {
   success: boolean;
   message: string;
 };
