@@ -6,6 +6,7 @@ const EnvSchema = z.object({
   NODE_ENV: z.string(),
   SENTRY_AUTH_TOKEN: z.string(),
   DATABASE_URL: z.string(),
+  AUTH_SECRET: z.string(),
 });
 
 export type EnvSchema = z.infer<typeof EnvSchema>;
