@@ -36,11 +36,23 @@ export namespace $Enums {
 
 export type Priority = (typeof Priority)[keyof typeof Priority]
 
+
+export const Status: {
+  Open: 'Open',
+  Closed: 'Closed'
+};
+
+export type Status = (typeof Status)[keyof typeof Status]
+
 }
 
 export type Priority = $Enums.Priority
 
 export const Priority: typeof $Enums.Priority
+
+export type Status = $Enums.Status
+
+export const Status: typeof $Enums.Status
 
 /**
  * ##  Prisma Client ʲˢ
@@ -2116,7 +2128,7 @@ export namespace Prisma {
     subject: string | null
     description: string | null
     priority: $Enums.Priority | null
-    status: string | null
+    status: $Enums.Status | null
     createdAt: Date | null
     updatedAt: Date | null
     userId: string | null
@@ -2127,7 +2139,7 @@ export namespace Prisma {
     subject: string | null
     description: string | null
     priority: $Enums.Priority | null
-    status: string | null
+    status: $Enums.Status | null
     createdAt: Date | null
     updatedAt: Date | null
     userId: string | null
@@ -2279,7 +2291,7 @@ export namespace Prisma {
     subject: string
     description: string
     priority: $Enums.Priority
-    status: string
+    status: $Enums.Status
     createdAt: Date
     updatedAt: Date
     userId: string
@@ -2372,7 +2384,7 @@ export namespace Prisma {
       subject: string
       description: string
       priority: $Enums.Priority
-      status: string
+      status: $Enums.Status
       createdAt: Date
       updatedAt: Date
       userId: string
@@ -2804,7 +2816,7 @@ export namespace Prisma {
     readonly subject: FieldRef<"Ticket", 'String'>
     readonly description: FieldRef<"Ticket", 'String'>
     readonly priority: FieldRef<"Ticket", 'Priority'>
-    readonly status: FieldRef<"Ticket", 'String'>
+    readonly status: FieldRef<"Ticket", 'Status'>
     readonly createdAt: FieldRef<"Ticket", 'DateTime'>
     readonly updatedAt: FieldRef<"Ticket", 'DateTime'>
     readonly userId: FieldRef<"Ticket", 'String'>
@@ -3348,6 +3360,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Status'
+   */
+  export type EnumStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Status'>
+    
+
+
+  /**
+   * Reference to a field of type 'Status[]'
+   */
+  export type ListEnumStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Status[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -3432,7 +3458,7 @@ export namespace Prisma {
     subject?: StringFilter<"Ticket"> | string
     description?: StringFilter<"Ticket"> | string
     priority?: EnumPriorityFilter<"Ticket"> | $Enums.Priority
-    status?: StringFilter<"Ticket"> | string
+    status?: EnumStatusFilter<"Ticket"> | $Enums.Status
     createdAt?: DateTimeFilter<"Ticket"> | Date | string
     updatedAt?: DateTimeFilter<"Ticket"> | Date | string
     userId?: StringFilter<"Ticket"> | string
@@ -3459,7 +3485,7 @@ export namespace Prisma {
     subject?: StringFilter<"Ticket"> | string
     description?: StringFilter<"Ticket"> | string
     priority?: EnumPriorityFilter<"Ticket"> | $Enums.Priority
-    status?: StringFilter<"Ticket"> | string
+    status?: EnumStatusFilter<"Ticket"> | $Enums.Status
     createdAt?: DateTimeFilter<"Ticket"> | Date | string
     updatedAt?: DateTimeFilter<"Ticket"> | Date | string
     userId?: StringFilter<"Ticket"> | string
@@ -3490,7 +3516,7 @@ export namespace Prisma {
     subject?: StringWithAggregatesFilter<"Ticket"> | string
     description?: StringWithAggregatesFilter<"Ticket"> | string
     priority?: EnumPriorityWithAggregatesFilter<"Ticket"> | $Enums.Priority
-    status?: StringWithAggregatesFilter<"Ticket"> | string
+    status?: EnumStatusWithAggregatesFilter<"Ticket"> | $Enums.Status
     createdAt?: DateTimeWithAggregatesFilter<"Ticket"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Ticket"> | Date | string
     userId?: StringWithAggregatesFilter<"Ticket"> | string
@@ -3567,7 +3593,7 @@ export namespace Prisma {
     subject: string
     description: string
     priority?: $Enums.Priority
-    status?: string
+    status?: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutTicketsInput
@@ -3578,7 +3604,7 @@ export namespace Prisma {
     subject: string
     description: string
     priority?: $Enums.Priority
-    status?: string
+    status?: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
@@ -3588,7 +3614,7 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     priority?: EnumPriorityFieldUpdateOperationsInput | $Enums.Priority
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutTicketsNestedInput
@@ -3599,7 +3625,7 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     priority?: EnumPriorityFieldUpdateOperationsInput | $Enums.Priority
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -3610,7 +3636,7 @@ export namespace Prisma {
     subject: string
     description: string
     priority?: $Enums.Priority
-    status?: string
+    status?: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
@@ -3620,7 +3646,7 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     priority?: EnumPriorityFieldUpdateOperationsInput | $Enums.Priority
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3630,7 +3656,7 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     priority?: EnumPriorityFieldUpdateOperationsInput | $Enums.Priority
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -3787,6 +3813,13 @@ export namespace Prisma {
     not?: NestedEnumPriorityFilter<$PrismaModel> | $Enums.Priority
   }
 
+  export type EnumStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -3859,6 +3892,16 @@ export namespace Prisma {
     _max?: NestedEnumPriorityFilter<$PrismaModel>
   }
 
+  export type EnumStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusWithAggregatesFilter<$PrismaModel> | $Enums.Status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusFilter<$PrismaModel>
+    _max?: NestedEnumStatusFilter<$PrismaModel>
+  }
+
   export type TicketCreateNestedManyWithoutUserInput = {
     create?: XOR<TicketCreateWithoutUserInput, TicketUncheckedCreateWithoutUserInput> | TicketCreateWithoutUserInput[] | TicketUncheckedCreateWithoutUserInput[]
     connectOrCreate?: TicketCreateOrConnectWithoutUserInput | TicketCreateOrConnectWithoutUserInput[]
@@ -3921,6 +3964,10 @@ export namespace Prisma {
 
   export type EnumPriorityFieldUpdateOperationsInput = {
     set?: $Enums.Priority
+  }
+
+  export type EnumStatusFieldUpdateOperationsInput = {
+    set?: $Enums.Status
   }
 
   export type UserUpdateOneRequiredWithoutTicketsNestedInput = {
@@ -4055,6 +4102,13 @@ export namespace Prisma {
     not?: NestedEnumPriorityFilter<$PrismaModel> | $Enums.Priority
   }
 
+  export type NestedEnumStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -4092,11 +4146,21 @@ export namespace Prisma {
     _max?: NestedEnumPriorityFilter<$PrismaModel>
   }
 
+  export type NestedEnumStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Status | EnumStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Status[] | ListEnumStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusWithAggregatesFilter<$PrismaModel> | $Enums.Status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStatusFilter<$PrismaModel>
+    _max?: NestedEnumStatusFilter<$PrismaModel>
+  }
+
   export type TicketCreateWithoutUserInput = {
     subject: string
     description: string
     priority?: $Enums.Priority
-    status?: string
+    status?: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4106,7 +4170,7 @@ export namespace Prisma {
     subject: string
     description: string
     priority?: $Enums.Priority
-    status?: string
+    status?: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4145,7 +4209,7 @@ export namespace Prisma {
     subject?: StringFilter<"Ticket"> | string
     description?: StringFilter<"Ticket"> | string
     priority?: EnumPriorityFilter<"Ticket"> | $Enums.Priority
-    status?: StringFilter<"Ticket"> | string
+    status?: EnumStatusFilter<"Ticket"> | $Enums.Status
     createdAt?: DateTimeFilter<"Ticket"> | Date | string
     updatedAt?: DateTimeFilter<"Ticket"> | Date | string
     userId?: StringFilter<"Ticket"> | string
@@ -4208,7 +4272,7 @@ export namespace Prisma {
     subject: string
     description: string
     priority?: $Enums.Priority
-    status?: string
+    status?: $Enums.Status
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4217,7 +4281,7 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     priority?: EnumPriorityFieldUpdateOperationsInput | $Enums.Priority
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4227,7 +4291,7 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     priority?: EnumPriorityFieldUpdateOperationsInput | $Enums.Priority
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4237,7 +4301,7 @@ export namespace Prisma {
     subject?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     priority?: EnumPriorityFieldUpdateOperationsInput | $Enums.Priority
-    status?: StringFieldUpdateOperationsInput | string
+    status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

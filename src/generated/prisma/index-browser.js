@@ -160,6 +160,11 @@ exports.Priority = exports.$Enums.Priority = {
   Low: 'Low'
 };
 
+exports.Status = exports.$Enums.Status = {
+  Open: 'Open',
+  Closed: 'Closed'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Ticket: 'Ticket'
