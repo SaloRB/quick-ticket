@@ -234,7 +234,7 @@ export async function closeTicket(
       },
     });
 
-    revalidatePath('/tickets');
+    revalidatePath("/tickets");
     revalidatePath(`/tickets/${ticketId}`);
 
     return {
